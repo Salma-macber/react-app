@@ -1,499 +1,93 @@
-import React, { useState } from 'react';
-import { TouchableOpacity, StyleSheet, Text, View, ImageBackground, ScrollView, FlatList, Modal, Switch } from 'react-native';
+import { View, Text, Image, StyleSheet, ScrollView } from "react-native";
+import { MyListTile } from "./my_list_tile";
 
-import { SafeAreaView } from 'react-native-safe-area-context';
-import Svg, { Circle, Rect } from 'react-native-svg';
+export default function App() {
+    return (
+        <ScrollView >
 
-function MyButton(props: { title: string, onPress: () => void }) {
-  return (
-    <TouchableOpacity onPress={props.onPress}>
-      <Text>{props.title}</Text>
-    </TouchableOpacity>
-  );
-}
+            <Text style={styles.label}>Account</Text>
+            <View style={styles.sizedBox16} />
+            <View style={styles.row}>
+                <View key="1" style={[styles.container, styles.boxShadow, styles.column]}>
+                    <Image source={require('../assets/images/mybooking.png')} />
+                    <View style={styles.sizedBox16} />
+                    <Text style={styles.text}>My Booking</Text>
+                </View>,
+                <View key="2" style={[styles.container, styles.boxShadow, styles.column]}>
+                    <Image source={require('../assets/images/myplan.png')} />
+                    <View style={styles.sizedBox16} />
+                    <Text style={styles.text}>My plan</Text>
+                </View>,
 
-function App() {
-  const [isEnabled, setIsEnabled] = useState(false);
-  const toggleSwitch = () => setIsEnabled(previousState => !previousState);
-  return (
-    <ScrollView contentContainerStyle={styles.scrollViewContent} >
-      <SafeAreaView>
-        <View>
-          <MyButton title="Press Me" onPress={() => alert('Button pressed')} />
-          <View style={{ height: 50, backgroundColor: 'blue' }} >
-            <Svg height="100%" width="100%" viewBox="0 0 100 100">
-              <Circle cx="50" cy="50" r="45" stroke="black" strokeWidth="3" fill="red" />
-              {/* <Rect x="50" y="50" width="10" height="10" fill="black" /> */}
-            </Svg>
-          </View>
-          <Switch
-            trackColor={{ false: "#767577", true: "#81b0ff" }}
-            thumbColor={isEnabled ? "#f5dd4b" : "#f4f3f4"}
-            ios_backgroundColor="#3e3e3e"
-            onValueChange={toggleSwitch}
-            value={isEnabled}
-          />
-          <View>
-            <FlatList
-              // scrollEnabled={false}
-              data={['item1', 'item2', 'item3']}
-              renderItem={({ item }) => <Text>{item}</Text>}
-              keyExtractor={item => item}
-            />
-          </View>
-          <ImageBackground source={require('../assets/images/banner.jpg')} style={{ width: '100%', height: 150 }}>
-            <Text>Hello</Text>
-            <Text>Hello</Text>
-            <Text>Hello</Text>
-            <Text>Hello</Text>
-          </ImageBackground>
-          <View>
-            <Text>Hello</Text>
-            <Text>Hello</Text>
-          </View>
-          <Modal
-            visible={false}
-            animationType="slide"
-            onRequestClose={() => { console.log('Modal closed') }}
-          >
-            <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
-              <Text>This is a Modal</Text>
             </View>
-          </Modal>
-        </View>
-      </SafeAreaView>  </ScrollView>
-  );
+            <View style={styles.sizedBox16} />
+            <MyListTile label="My Events" myIcon={require('../assets/images/event.png')} />
+
+        </ScrollView>
+    )
+
+
 }
+export const styles = StyleSheet.create({
+    label: {
+        color: '#01174F',
+        fontWeight: '700',
+        fontSize: 32,
+    },
+    text: {
+        color: '#01174F',
+        fontWeight: '700',
+        fontSize: 14,
+    },
+    scrollView: {
+        flex: 1,
+        backgroundColor: '#F9F9FC',
+        alignItems: 'stretch',
+        paddingVertical: 20,
+        paddingHorizontal: 16,
+    },
+    flex: {
+        flex: 1
+    },
+    divider: {
+        height: 1,
+        width: '100%',
+        backgroundColor: 'lightgray',
+    },
+    sizedBox16: {
+        height: 16,
+    },
+    sizedBox8: {
+        height: 8,
+    },
+    container: {
+        flex: 1,
+        backgroundColor: '#ffffff',
+        // alignItems: 'stretch',
+        paddingVertical: 32,
+        paddingHorizontal: 16,
 
-export default App;
-
-
-// //////////////////////////////////////////////////////
-
-// import React from 'react';
-// import {
-//   SafeAreaView,
-//   View,
-//   Text,
-//   Image,
-//   FlatList,
-//   TouchableOpacity,
-//   ScrollView,
-//   StyleSheet,
-// } from 'react-native';
-// import Icon from 'react-native-vector-icons/Ionicons';
-
-// const App = () => {
-//   const upcomingEvents = [
-//     {
-//       id: '1',
-//       title: 'Summer Music Festival',
-//       date: 'Mar 15, 2025',
-//       location: 'Golden Gate Park',
-//       image: require('../assets/images/upcoming1.jpg'),
-//     },
-//     {
-//       id: '2',
-//       title: 'Tech Conference',
-//       date: 'Mar 20, 2025',
-//       location: 'Convention Center',
-//       image: require('../assets/images/upcoming1.jpg'),
-//     },
-//   ];
-
-//   const pastEvents = [
-//     {
-//       id: '1',
-//       title: 'Jazz Night Special',
-//       date: 'Mar 25, 2025',
-//       location: 'Blue Note Jazz Club',
-//       image: require('../assets/images/art.jpg'),
-//     },
-//     {
-//       id: '2',
-//       title: 'Modern Art Exhibition',
-//       date: 'Mar 30, 2025',
-//       location: 'Contemporary Arts Museum',
-//       image: require('../assets/images/art.jpg'),
-//     },
-//   ];
-
-//   return (
-//     <SafeAreaView style={styles.container}>
-//       <ScrollView>
-//         {/* Header */}
-//         <View style={styles.header}>
-//           <View>
-//             <Text style={styles.hello}>Hello,</Text>
-//             <Text style={styles.username}>Mohamed</Text>
-//           </View>
-//           <View style={styles.headerIcons}>
-//             <Icon name="notifications-outline" size={24} color="#fff" style={{ marginRight: 10 }} />
-//             <Image source={{ uri: 'https://i.pravatar.cc/300' }} style={styles.avatar} />
-//           </View>
-//         </View>
-
-//         {/* Banner */}
-//         <Image source={require('../assets/images/banner.jpg')} style={styles.banner} />
-
-//         {/* Upcoming Events */}
-//         <View style={styles.sectionHeader}>
-//           <Text style={styles.sectionTitle}>Upcoming Events</Text>
-//           <TouchableOpacity>
-//             <Text style={styles.seeAll}>See all</Text>
-//           </TouchableOpacity>
-//         </View>
-
-//         <FlatList
-//           horizontal
-//           showsHorizontalScrollIndicator={false}
-//           data={upcomingEvents}
-//           keyExtractor={item => item.id}
-//           renderItem={({ item }) => (
-//             <View style={styles.card}>
-//               <Image source={item.image} style={styles.eventImage} />
-//               <Text style={styles.eventTitle}>{item.title}</Text>
-//               <Text style={styles.eventDetails}>
-//                 {item.date} • {item.location}
-//               </Text>
-//               <TouchableOpacity style={styles.interestBtn}>
-//                 <Text style={styles.interestBtnText}>I'm Interested</Text>
-//               </TouchableOpacity>
-//             </View>
-//           )}
-//         />
-
-//         {/* Past Events */}
-//         <Text style={styles.sectionTitle}>Past Events</Text>
-//         {pastEvents.map(item => (
-//           <View key={item.id} style={styles.card}>
-//             <Image source={item.image} style={styles.eventImage} />
-//             <View style={styles.pastEventHeader}>
-//               <Text style={styles.eventTitle}>{item.title}</Text>
-//               <Text style={styles.checkedIn}>Checked In</Text>
-//             </View>
-//             <Text style={styles.eventDetails}>
-//               {item.date} • {item.location}
-//             </Text>
-//           </View>
-//         ))}
-//       </ScrollView>
-
-//       {/* Bottom Navigation */}
-//       <View style={styles.bottomNav}>
-//         <Icon name="home" size={24} color="#6a1b9a" />
-//         <Icon name="calendar-outline" size={24} color="#999" />
-//         <Icon name="person-outline" size={24} color="#999" />
-//         <Icon name="menu-outline" size={24} color="#999" />
-//       </View>
-//     </SafeAreaView>
-//   );
-// };
-
-// const styles = StyleSheet.create({
-//   container: { flex: 1, backgroundColor: '#fff' },
-//   header: {
-//     backgroundColor: '#6a1b9a',
-//     flexDirection: 'row',
-//     justifyContent: 'space-between',
-//     padding: 16,
-//     borderBottomLeftRadius: 20,
-//     borderBottomRightRadius: 20,
-//   },
-//   hello: { color: '#fff', fontSize: 14 },
-//   username: { color: '#fff', fontSize: 16, fontWeight: 'bold' },
-//   headerIcons: { flexDirection: 'row', alignItems: 'center' },
-//   avatar: { width: 35, height: 35, borderRadius: 18 },
-//   banner: {
-//     margin: 16,
-//     height: 150,
-//     borderRadius: 12,
-//     resizeMode: 'cover',
-//   },
-//   sectionHeader: {
-//     marginHorizontal: 16,
-//     marginTop: 10,
-//     flexDirection: 'row',
-//     justifyContent: 'space-between',
-//   },
-//   sectionTitle: { fontSize: 18, fontWeight: '600', marginHorizontal: 16, marginTop: 20 },
-//   seeAll: { color: '#6a1b9a', marginRight: 16 },
-//   card: {
-//     margin: 16,
-//     backgroundColor: '#f9f9f9',
-//     borderRadius: 12,
-//     padding: 12,
-//     width: 250,
-//   },
-//   eventImage: {
-//     width: '100%',
-//     height: 120,
-//     borderRadius: 10,
-//   },
-//   eventTitle: {
-//     fontSize: 16,
-//     fontWeight: '600',
-//     marginTop: 10,
-//   },
-//   eventDetails: {
-//     color: '#777',
-//     marginTop: 4,
-//   },
-//   interestBtn: {
-//     backgroundColor: '#6a1b9a',
-//     paddingVertical: 8,
-//     marginTop: 10,
-//     borderRadius: 8,
-//     alignItems: 'center',
-//   },
-//   interestBtnText: {
-//     color: '#fff',
-//     fontWeight: 'bold',
-//   },
-//   pastEventHeader: {
-//     flexDirection: 'row',
-//     justifyContent: 'space-between',
-//     alignItems: 'center',
-//   },
-//   checkedIn: {
-//     backgroundColor: '#eee',
-//     color: '#6a1b9a',
-//     paddingHorizontal: 8,
-//     paddingVertical: 2,
-//     borderRadius: 12,
-//     fontSize: 12,
-//   },
-//   bottomNav: {
-//     flexDirection: 'row',
-//     justifyContent: 'space-around',
-//     padding: 12,
-//     borderTopWidth: 1,
-//     borderColor: '#eee',
-//   },
-// });
-
-// export default App;
-
-
-// //////////////////////////////////////////////////////
-
-// import React from 'react';
-// import { Alert, StyleSheet, Text, View, FlatList } from 'react-native';
-
-// const LotsOfStyles = () => {
-
-//     return (
-//         <View style={styles.container}>
-//             <Text style={styles.red} minimumFontScale={0.01}>just red</Text>
-//             <Text style={styles.bigBlue} >just bigBlue</Text>
-//             <Text style={[styles.bigBlue, styles.red]} onPress={() => Alert.alert('Alert Title', 'My Alert Msg')} selectable={false} >bigBlue, then red</Text>
-//             <Text style={[styles.red, styles.bigBlue]} numberOfLines={1}>red, then bigBlue bigBlue bigBlue bigBlue bigBlue bigBlue</Text>
-//             {/* <FlatList   */}
-//         </View>
-//     );
-// };
-
-// const styles = StyleSheet.create({
-//     container: {
-//         marginTop: 50,
-//         marginBottom: 10,
-//         // justifyContent: 'center', //to center item inside container
-//         alignItems: 'center', //to center item inside container
-//     },
-//     bigBlue: {
-//         color: 'blue',
-//         fontWeight: 'bold',
-//         fontSize: 30,
-//         paddingHorizontal: 16,
-//         paddingTop: 10,
-//     },
-//     red: {
-//         color: 'red',
-//     },
-// });
-// export default function App() {
-//     return LotsOfStyles()
-// }
-
-// //////////////////////////////////////////////////////
-// import React, { useState, PropsWithChildren } from "react";
-// import { Text, ScrollView, Image, TextInput, View, StyleSheet, TouchableOpacity } from "react-native";
-// import { SafeAreaView, SafeAreaProvider } from 'react-native-safe-area-context';
-
-// export default function App() {
-//   const [text, onChangeText] = useState('Salma');
-//   const [number, onChangeNumber] = useState('');
-//   const logo = {
-//     uri: 'https://reactnative.dev/img/tiny_logo.png',
-//     width: 64,
-//     height: 64,
-//   };
-//   const [flexDirection, setflexDirection] = useState('column');
-
-//   return (
-//     <>
-//       <SafeAreaProvider style={styles.view}>
-//         <ScrollView contentContainerStyle={styles.scrollViewContent}>
-//           <h1>Edit app/index.tsx to edit this screen.</h1>
-//           <Spacer height={32} />
-//           <Text>Edit app/index.tsx to edit this screen.</Text>
-//           <Spacer height={8} />
-//           <SafeAreaView>
-//             <TextInput
-//               style={styles.input}
-//               onChangeText={onChangeText}
-//               value={text}
-//             />
-//             <TextInput
-//               style={styles.input}
-//               onChangeText={onChangeNumber}
-//               value={number}
-//               placeholder="Enter your number"
-//               keyboardType="numeric"
-//             />
-//           </SafeAreaView>
-//           <Spacer height={32} />
-//           <View style={styles.row}>
-//             <Image source={logo} />
-//             <Image source={logo} />
-//             <Image source={logo} />
-//             <Image source={logo} />
-//             <Image source={logo} />
-//           </View>
-//           <Spacer height={16} />
-//           <Text style={{ fontSize: 16 }}>Scrolling down</Text>
-//           <br />
-//           <Text style={{ fontSize: 18 }}>What's the best</Text>
-//           <br />
-//           <Text style={{ fontSize: 20 }}>React Native</Text>
-
-//           <PreviewLayout
-//             label="flexDirection"
-//             values={['column', 'row', 'column-reverse', 'row-reverse']}
-//             selectedValue={flexDirection}
-//             setSelectedValue={setflexDirection}>
-//             <View style={[styles.box, { backgroundColor: 'powderblue' }]} />
-//             <View style={[styles.box, { backgroundColor: 'skyblue' }]} />
-//             <View style={[styles.box, { backgroundColor: 'steelblue' }]} />
-//           </PreviewLayout>
-//         </ScrollView>
-//       </SafeAreaProvider>
-
-//     </>
-
-//   );
-// }
-
-
-
-
-// // Create a reusable Spacer component
-// const Spacer = ({ height = 0, width = 0 }) => (
-//   <View style={{ height, width }} />
-// );
-
-// type PreviewLayoutProps = PropsWithChildren<{
-//   label: string;
-//   values: string[];
-//   selectedValue: string;
-//   setSelectedValue: (value: string) => void;
-// }>;
-
-// const PreviewLayout = ({
-//   label,
-//   children,
-//   values,
-//   selectedValue,
-//   setSelectedValue,
-// }: PreviewLayoutProps) => (<ScrollView horizontal>
-//   <View style={{ padding: 10 }}>
-//     <Text style={styles.label}>{label}</Text>
-
-//     <View style={styles.row}>
-//       {values.map(value => (
-//         <TouchableOpacity
-//           key={value}
-//           onPress={() => setSelectedValue(value)}
-//           style={[styles.button, selectedValue === value && styles.selected]}>
-//           <Text
-//             style={[
-//               styles.buttonLabel,
-//               selectedValue === value && styles.selectedLabel,
-//             ]}>
-//             {value}
-//           </Text>
-//         </TouchableOpacity>
-//       ))}
-//     </View>
-
-//     <View style={[styles.container, { [label]: selectedValue }]}>{children}</View>
-//   </View>  </ScrollView>
-// );
-
-
-const styles = StyleSheet.create({
-  scrollViewContent: {
-    // flexGrow: 1, // This ensures the ScrollView takes up all available space
-
-  },
-  container: {
-    flex: 1,
-    justifyContent: 'center', // Centers content vertically
-    alignItems: 'center',     // Centers content horizontally
-    padding: 20,
-  },
-  row: {
-    flexDirection: 'row',
-    justifyContent: 'center',
-    alignItems: 'center',
-    gap: 20, // This adds space between items (modern approach)
-  },
-  input: {
-    height: 44,
-    margin: 12,
-    borderWidth: 1,
-    padding: 10,
-    backgroundColor: '#d58d9f',
-    borderRadius: 10,
-    // width: '80%',
-
-  },
-  button: {
-    paddingHorizontal: 8,
-    paddingVertical: 6,
-    borderRadius: 4,
-    backgroundColor: 'oldlace',
-    alignSelf: 'flex-start',
-    marginHorizontal: '1%',
-    marginBottom: 6,
-    // minWidth: '48%',
-    textAlign: 'center',
-  },
-  selected: {
-    backgroundColor: 'coral',
-    borderWidth: 0,
-  },
-  buttonLabel: {
-    fontSize: 12,
-    fontWeight: '500',
-    color: 'coral',
-  },
-  selectedLabel: {
-    color: 'white',
-  },
-  label: {
-    textAlign: 'center',
-    marginBottom: 10,
-    fontSize: 24,
-  },
-  box: {
-    width: 50,
-    height: 50,
-  },
-  view: {
-    flex: 1,
-    backgroundColor: '#e8b9c5',
-    justifyContent: "center",
-    alignItems: "center",
-  },
-});
+    },
+    padding16: { paddingHorizontal: 16, },
+    boxShadow: {
+        shadowColor: '#000000',
+        shadowOffset: {
+            width: 4,
+            height: 4,
+        },
+        shadowOpacity: 0.6,
+        shadowRadius: 4,
+        elevation: 3,
+    },
+    column: {
+        flexDirection: 'column',
+        // alignItems: 'center',
+    },
+    row: {
+        flexDirection: 'row',
+        // flex: 1,
+        // flexShrink: 1,
+        alignItems: 'center',
+        rowGap: 16,
+    },
+})

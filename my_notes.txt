@@ -1,0 +1,15 @@
+important properties: 
+
+- view=> style
+flexBox
+
+style= StyleSheet.create({})  // to valid permerters of css inside {}.
+alignItem : ‘center’;
+justifyContent : ‘center’;
+
+
+<Pressable> to detect this stage of press interactive.
+<StatusBar background="" barStyle="dark-content" hidden > 
+<ActivityIndicator size= "large" color="black" animating= {false}/>
+flexShrink as extended property
+flexGrow is set to box to apply one all children.
