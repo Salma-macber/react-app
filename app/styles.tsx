@@ -1,4 +1,86 @@
-// import { StyleSheet } from 'react-native';
+import { StyleSheet } from 'react-native';
+  const styles = StyleSheet.create({
+    label: {
+        color: '#01174F',
+        fontWeight: '700',
+        fontSize: 32,
+    },
+    text: {
+        color: '#01174F',
+        fontWeight: '700',
+        fontSize: 14,
+    },
+    scrollView: {
+        flex: 1,
+        backgroundColor: '#F9F9FC',
+        alignItems: 'stretch',
+        paddingVertical: 20,
+        paddingHorizontal: 16,
+    },
+    flex: {
+        flex: 1
+    },
+    divider: {
+        height: 1,
+        width: '100%',
+        backgroundColor: 'lightgray',
+    },
+    sizedBox16: {
+        height: 16,
+    },
+    sizedBox24: {
+        height: 24,
+    },
+    sizedBox16Horizontal: {
+        width: 16,
+    },
+    sizedBox8: {
+        height: 8,
+    },
+    container: {
+        flex: 1,
+        backgroundColor: '#ffffff',
+        // alignItems: 'stretch',
+        paddingVertical: 32,
+        paddingHorizontal: 16,
+
+    },
+    padding16: {
+        paddingHorizontal: 16,
+    },
+    boxShadow: {
+        shadowColor: '#000000',
+        shadowOffset: {
+            width: 4,
+            height: 4,
+        },
+        shadowOpacity: 0.6,
+        shadowRadius: 4,
+        elevation: 3,
+    },
+    column: {
+        flexDirection: 'column',
+        // alignItems: 'center',
+    },
+    row: {
+        flexDirection: 'row',
+        // flex: 1,
+        // flexShrink: 1,
+        alignItems: 'center',
+        rowGap: 16,
+    },
+    tabBarLabelStyle: {
+      fontSize: 16,
+      fontFamily: 'Georgia',
+      fontWeight: 300,
+    },
+})
+
+
+export default styles;
+
+
+
 
 // export const styles = StyleSheet.create({
 //     alternativeLayoutButtonContainer: {
