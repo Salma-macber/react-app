@@ -11,11 +11,10 @@ const data: ImageSourcePropType[] =
         require('../../../../assets/images/slider/Social Media - 2.png'),
         require('../../../../assets/images/slider/image 6.png'),
         require('../../../../assets/images/slider/Social Media - 2.png'),
-        require('../../../../assets/images/MyFitnessClub.png'),
+        require('../../../../assets/images/slider/image 6.png'),
         require('../../../../assets/images/slider/Social Media - 2.png'),
-        require('../../../../assets/images/Favorite.png'),
+        require('../../../../assets/images/slider/image 6.png'),
         require('../../../../assets/images/slider/Social Media - 2.png'),
-        require('../../../../assets/images/Get direction.png'),
         // ...new Array(6).keys()
     ];
 const width = Dimensions.get("window").width;
