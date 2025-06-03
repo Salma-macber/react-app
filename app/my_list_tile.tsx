@@ -10,7 +10,8 @@ export default function MyListTile({ label, myIcon }: { label: string, myIcon: I
             <Text style={styles.text}>{label}</Text>
             <View style={styles.flex} />
             <Icon name="chevron-right" size={24} color="#01174F" />
-        </View>  <View style={styles.sizedBox8} />
+        </View>
+        <View style={styles.sizedBox8} />
         <View style={styles.divider} />
     </View>;
 }

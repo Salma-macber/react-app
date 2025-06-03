@@ -1,0 +1,18 @@
+[
+    {
+        "title": "Booking",
+        "icon": "../../../../assets/images/mybooking.png"
+    },
+    {
+        "title": "Membership",
+        "icon": "../../../../assets/images/myplan.png"
+    },
+    {
+        "title": "Events",
+        "icon": "../../../../assets/images/event.png"
+    },
+    {
+        "title": "Marketplace",
+        "icon": "../../../../assets/images/event.png"
+    }
+]

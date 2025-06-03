@@ -1,5 +1,9 @@
 import { StyleSheet } from 'react-native';
-  const styles = StyleSheet.create({
+const styles = StyleSheet.create({
+    header: {
+        paddingVertical: 20,
+        paddingHorizontal: 16,
+    },
     label: {
         color: '#01174F',
         fontWeight: '700',
@@ -9,6 +13,11 @@ import { StyleSheet } from 'react-native';
         color: '#01174F',
         fontWeight: '700',
         fontSize: 14,
+    },
+    largeText: {
+        color: '#01174F',
+        fontWeight: '700',
+        fontSize: 16,
     },
     scrollView: {
         flex: 1,
@@ -24,6 +33,11 @@ import { StyleSheet } from 'react-native';
         height: 1,
         width: '100%',
         backgroundColor: 'lightgray',
+    },
+    mergeBox16: {
+        marginEnd: 16,
+    }, whiteBox: {
+        backgroundColor: 'white',
     },
     sizedBox16: {
         height: 16,
@@ -48,6 +62,10 @@ import { StyleSheet } from 'react-native';
     padding16: {
         paddingHorizontal: 16,
     },
+    padding16H8V: {
+        paddingHorizontal: 16,
+        paddingVertical: 8,
+    },
     boxShadow: {
         shadowColor: '#000000',
         shadowOffset: {
@@ -70,9 +88,9 @@ import { StyleSheet } from 'react-native';
         rowGap: 16,
     },
     tabBarLabelStyle: {
-      fontSize: 16,
-      fontFamily: 'Georgia',
-      fontWeight: 300,
+        fontSize: 16,
+        fontFamily: 'Georgia',
+        fontWeight: 300,
     },
 })
 
